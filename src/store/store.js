@@ -8,7 +8,7 @@ Vue.use(Vuex)
 const moduleDecisionTables = {
   state: {
     decisiontables: [
-      new DecisionTable().getDecisionTable()
+      new DecisionTable()
     ]
   },
   getters: {

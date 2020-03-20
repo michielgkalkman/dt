@@ -3,12 +3,12 @@
     <p>You chose {{ $store.getters.flavor }}</p>
     <p>test decisionTable {{ decisionTableId }}</p>
     <table border="1">
-    <ConditionRow v-for="(c,index) in decisionTable.conditions"
+    <ConditionRow v-for="(c,index) in conditions"
       v-bind:key="index"
-      v-bind:conditions="decisionTable.conditions[index]"/>
-    <ActionRow v-for="(c,index) in decisionTable.actions"
+      v-bind:conditions="conditions[index]"/>
+    <ActionRow v-for="(c,index) in actions"
       v-bind:key="1000+index"
-      v-bind:actions="decisionTable.actions[index]"
+      v-bind:actions="actions[index]"
       :actionRowKey="1000+index"
       />
     </table>
@@ -40,11 +40,14 @@ export default {
     }
   },
   computed: {
+    conditions() {
+      return this.$store.getters.getDecisionTable(0).asJson().conditions
+    },
+    actions() {
+      return this.$store.getters.getDecisionTable(0).asJson().actions
+    },
     decisionTable() {
-      console.log( this.$store.state.decisionTables.decisiontables[0].decisionTable.conditions[0].condition)
-      console.log( this.$store.getters.getDecisionTable(0).decisionTable.conditions[0].condition)
-      return this.$store.getters.getDecisionTable(0).decisionTable
-      // return this.$store.state.decisionTablesx.decisiontables[0].decisionTable
+      return this.$store.getters.getDecisionTable(0)
     }
   }
 }
