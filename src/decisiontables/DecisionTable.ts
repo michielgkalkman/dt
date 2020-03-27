@@ -1,5 +1,22 @@
+import { Condition } from './Condition'
+
 export class DecisionTable {
+  conditions: Condition[] = []
+
   constructor() {
+  }
+
+  asText() {
+    let s: string = ''
+
+    this.conditions.forEach( condition => s = s + condition.shortName)
+
+    return s
+  }
+
+  addCondition( shortName: string) {
+    let condition: Condition = new Condition( shortName)
+    this.conditions.push( condition) 
   }
 
   asJson() {
