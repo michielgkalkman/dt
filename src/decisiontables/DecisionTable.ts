@@ -1,10 +1,14 @@
 import { Condition } from './Condition'
+import { Action } from './Action'
 import { Case } from './Case'
 import { ConditionValue } from './ConditionValue'
 import { ConditionValues } from './ConditionValues'
+import { ActionValue } from './ActionValue'
+import { ActionValues } from './ActionValues'
 
 export class DecisionTable {
   conditions: Condition[] = []
+  actions: Action[] = []
 
   cases: Case[] = []
 
@@ -19,6 +23,16 @@ export class DecisionTable {
 
       this.cases.forEach( c => {
         s += c.getConditionValue(condition.shortName)
+      })
+
+      s += '\n'
+    })
+
+    this.actions.forEach( action => {
+      s = s + action.shortName.padEnd( 25, ' ')
+
+      this.cases.forEach( c => {
+        s += c.getActionValue(action.shortName)
       })
 
       s += '\n'
@@ -54,6 +68,26 @@ export class DecisionTable {
       this.cases = newcases
     }
     this.conditions.push( condition)
+  }
+
+  addAction( shortName: string) {
+    let action: Action = new Action( shortName)
+    
+    if( this.cases.length > 0) {
+      let newcases: Case[] = []
+
+      this.cases.forEach( somecase => {
+        let case1: Case = Case.from( somecase)
+        case1.addActionValue( shortName, new ActionValue( ActionValues.Do))
+        newcases.push( case1)
+        let case2: Case = Case.from( somecase)
+        case2.addActionValue( shortName, new ActionValue( ActionValues.Dont))
+        newcases.push( case2)
+      })
+
+      this.cases = newcases
+    }
+    this.actions.push( action)
   }
 
   asJson() {
