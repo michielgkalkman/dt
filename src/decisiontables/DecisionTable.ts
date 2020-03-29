@@ -20,6 +20,8 @@ export class DecisionTable {
       this.cases.forEach( c => {
         s += c.getConditionValue(condition.shortName)
       })
+
+      s += '\n'
     })
 
     return s
@@ -27,7 +29,6 @@ export class DecisionTable {
 
   addCondition( shortName: string) {
     let condition: Condition = new Condition( shortName)
-    this.conditions.push( condition)
     
     if( this.cases.length == 0) {
       // Create two cases
@@ -38,8 +39,21 @@ export class DecisionTable {
       case2.addConditionValue( shortName, new ConditionValue( ConditionValues.No))
 
       this.cases.push( case1, case2)
-    }
+    } else {
+      let newcases: Case[] = []
 
+      this.cases.forEach( somecase => {
+        let case1: Case = Case.from( somecase)
+        case1.addConditionValue( shortName, new ConditionValue( ConditionValues.Yes))
+        newcases.push( case1)
+        let case2: Case = Case.from( somecase)
+        case2.addConditionValue( shortName, new ConditionValue( ConditionValues.No))
+        newcases.push( case2)
+      })
+
+      this.cases = newcases
+    }
+    this.conditions.push( condition)
   }
 
   asJson() {

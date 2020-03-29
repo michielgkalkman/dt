@@ -5,8 +5,8 @@ describe("Adding conditions", () => {
     let decisionTable = new DecisionTable()
 
     expect( decisionTable.asText()).toEqual('')
-  });
-});
+  })
+})
 
 describe("Adding conditions", () => {
   it("Check the addCondition function", () => {
@@ -14,9 +14,24 @@ describe("Adding conditions", () => {
 
     decisionTable.addCondition('condition-1')
 
-    expect( decisionTable.asText()).toEqual('condition-1')
-  });
-});
+    expect( decisionTable.asText()).toEqual('condition-1              YN\n')
+  })
+})
+
+
+describe("Adding conditions", () => {
+  it("Check calling the addCondition function twice", () => {
+    let decisionTable = new DecisionTable()
+
+    decisionTable.addCondition('condition-1')
+    decisionTable.addCondition('condition-2')
+
+    expect( decisionTable.asText()).toEqual(
+        'condition-1              YYNN\n'  
+      + 'condition-2              YNYN\n'  
+      )
+  })
+})
 
 describe("🔥 This is a simple test", () => {
   test("Check the sampleFunction function", () => {
