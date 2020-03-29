@@ -78,7 +78,7 @@ export class DecisionTable {
 
       this.cases.forEach( somecase => {
         let case1: Case = Case.from( somecase)
-        case1.addActionValue( shortName, new ActionValue( ActionValues.Do))
+        case1.addActionValue( shortName, new ActionValue( ActionValues.Dont))
         newcases.push( case1)
         let case2: Case = Case.from( somecase)
         case2.addActionValue( shortName, new ActionValue( ActionValues.Dont))
