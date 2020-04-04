@@ -1,11 +1,11 @@
 module.exports = {
   presets: [
-    '@vue/cli-plugin-babel/preset',
+    [ '@vue/cli-plugin-babel/preset',
     {
-      targets: {
-        node: 'current',
-      },
+      'targets': {
+        'node': 'current',
+      }
     },
-    '@babel/preset-typescript',
+    '@babel/preset-typescript']
   ]
 }

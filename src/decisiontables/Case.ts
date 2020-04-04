@@ -32,7 +32,7 @@ export class Case {
     }
 
     getConditionValue(key: string) {
-        return this.conditionValues.get(key).conditionValue
+        return this.conditionValues.get(key)?.conditionValue
     }
 
     addActionValue( key: string, actionValue: ActionValue ) {
@@ -40,7 +40,7 @@ export class Case {
     }
 
     getActionValue(key: string) {
-        return this.actionValues.get(key).actionValue
+        return this.actionValues.get(key)?.actionValue
     }
 }
 
