@@ -12,11 +12,8 @@ export class DecisionTable {
 
   cases: Case[] = []
 
-  constructor() {
-  }
-
   asText() {
-    let s: string = ''
+    let s = ''
 
     this.conditions.forEach( condition => {
       s = s + condition.shortName.padEnd( 25, ' ')
@@ -42,25 +39,25 @@ export class DecisionTable {
   }
 
   addCondition( shortName: string) {
-    let condition: Condition = new Condition( shortName)
+    const condition: Condition = new Condition( shortName)
     
     if( this.cases.length == 0) {
       // Create two cases
-      let case1: Case = new Case( '')
-      let case2: Case = new Case( '')
+      const case1: Case = new Case( '')
+      const case2: Case = new Case( '')
 
       case1.addConditionValue( shortName, new ConditionValue( ConditionValues.Yes))
       case2.addConditionValue( shortName, new ConditionValue( ConditionValues.No))
 
       this.cases.push( case1, case2)
     } else {
-      let newcases: Case[] = []
+      const newcases: Case[] = []
 
       this.cases.forEach( somecase => {
-        let case1: Case = Case.from( somecase)
+        const case1: Case = Case.from( somecase)
         case1.addConditionValue( shortName, new ConditionValue( ConditionValues.Yes))
         newcases.push( case1)
-        let case2: Case = Case.from( somecase)
+        const case2: Case = Case.from( somecase)
         case2.addConditionValue( shortName, new ConditionValue( ConditionValues.No))
         newcases.push( case2)
       })
@@ -71,16 +68,16 @@ export class DecisionTable {
   }
 
   addAction( shortName: string) {
-    let action: Action = new Action( shortName)
+    const action: Action = new Action( shortName)
     
     if( this.cases.length > 0) {
-      let newcases: Case[] = []
+      const newcases: Case[] = []
 
       this.cases.forEach( somecase => {
-        let case1: Case = Case.from( somecase)
+        const case1: Case = Case.from( somecase)
         case1.addActionValue( shortName, new ActionValue( ActionValues.Dont))
         newcases.push( case1)
-        let case2: Case = Case.from( somecase)
+        const case2: Case = Case.from( somecase)
         case2.addActionValue( shortName, new ActionValue( ActionValues.Dont))
         newcases.push( case2)
       })

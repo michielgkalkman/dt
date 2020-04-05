@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { DecisionTable } from '../decisiontables/DecisionTable.ts'
+import { DecisionTable } from '../decisiontables/DecisionTable'
 
 Vue.use(Vuex)
 
