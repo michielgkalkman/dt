@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>You chose {{ $store.getters.flavor }}</p>
     <p>test decisionTable {{ decisionTableId }}</p>
     <table border="1">
     <ConditionRow v-for="(c,index) in conditions"
@@ -13,14 +12,11 @@
       />
     </table>
   </div>
-
-  
 </template>
 
 <script>
 import ConditionRow from './ConditionRow.vue'
 import ActionRow from './ActionRow.vue'
-
 
 export default {
   name: 'DecisionTable',
@@ -32,12 +28,6 @@ export default {
     'decisionTableId'
   ],
   methods: {
-    doSomething (text) {
-        alert(`You clicked ${text}!`);
-    },
-    sayColor(color) {
-      window.alert('left click on ' + color)
-    }
   },
   computed: {
     conditions() {

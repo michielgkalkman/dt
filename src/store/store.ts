@@ -12,8 +12,8 @@ const moduleDecisionTables = {
     ]
   },
   getters: {
-    getDecisionTable(state) {
-      return id => state.decisiontables[id]
+    getDecisionTable(state: any) {
+      return (id: any) => state.decisiontables[id]
     }
   }
 }
