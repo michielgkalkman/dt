@@ -30,14 +30,14 @@ export default {
   methods: {
   },
   computed: {
+    decisionTable() {
+      return this.$store.getters.getDecisionTable(0)
+    },
     conditions() {
       return this.$store.getters.getDecisionTable(0).asJson().conditions
     },
     actions() {
       return this.$store.getters.getDecisionTable(0).asJson().actions
-    },
-    decisionTable() {
-      return this.$store.getters.getDecisionTable(0)
     }
   }
 }
