@@ -45,9 +45,6 @@ export default {
     }
   },
   computed: {
-    // name() {
-    //   return this.$store.getters.getDecisionTable(0).name
-    // }
   },
   mounted() {
     this.$store.subscribe((mutation, state) => {

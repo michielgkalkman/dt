@@ -31,13 +31,13 @@ export default {
   },
   computed: {
     decisionTable() {
-      return this.$store.getters.getDecisionTable(0)
+      return this.$store.getters.getDecisionTable(this.decisionTableId)
     },
     conditions() {
-      return this.$store.getters.getDecisionTable(0).asJson().conditions
+      return this.$store.getters.getDecisionTable(this.decisionTableId).asJson().conditions
     },
     actions() {
-      return this.$store.getters.getDecisionTable(0).asJson().actions
+      return this.$store.getters.getDecisionTable(this.decisionTableId).asJson().actions
     }
   }
 }
