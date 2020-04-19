@@ -12,6 +12,8 @@ export class DecisionTable {
 
   cases: Case[] = []
 
+  name = 'default name'
+
   asText() {
     let s = ''
 

@@ -13,6 +13,7 @@
       <li class="disabled">edit row</li>
       <li @click="sayColor(String(actionRowKey))">up</li>
       <li class="disabled">down</li>
+      <li class="disabled">{{name()}}</li>
     </context-menu>
   </tr>
 </template>
@@ -38,9 +39,15 @@ export default {
     },
     sayColor(color) {
       window.alert('left click on ' + color)
+    },
+    name() {
+      return this.$store.getters.getDecisionTable(0).name
     }
   },
   computed: {
+    // name() {
+    //   return this.$store.getters.getDecisionTable(0).name
+    // }
   },
   mounted() {
     this.$store.subscribe((mutation, state) => {
